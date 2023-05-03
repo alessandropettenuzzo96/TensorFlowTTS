@@ -189,7 +189,7 @@ def gen_audio_features(item, config):
         item (Dict): dictionary containing the updated attributes.
     """
     
-    if item["raw_text"] is None:
+    if "raw_text" not in item:
         return False, None, None, None, { "utt_id": item["utt_id"] }
     
     # get info from sample.
