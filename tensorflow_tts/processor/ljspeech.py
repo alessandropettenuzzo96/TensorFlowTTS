@@ -168,7 +168,9 @@ class LJSpeechProcessor(BaseProcessor):
 
         # normalize audio signal to be [-1, 1], soundfile already norm.
         if not os.path.exists(wav_path):
-            return None
+            return {
+                "utt_id": os.path.split(wav_path)[-1].split(".")[0],
+            }
         
         audio, rate = sf.read(wav_path)
         audio = audio.astype(np.float32)
