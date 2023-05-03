@@ -188,6 +188,10 @@ def gen_audio_features(item, config):
         f0 (ndarray): fundamental frequency.
         item (Dict): dictionary containing the updated attributes.
     """
+    
+    if item is None:
+        return False, None, None, None, None
+    
     # get info from sample.
     audio = item["audio"]
     utt_id = item["utt_id"]
