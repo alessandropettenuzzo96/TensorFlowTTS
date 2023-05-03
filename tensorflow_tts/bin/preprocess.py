@@ -189,8 +189,8 @@ def gen_audio_features(item, config):
         item (Dict): dictionary containing the updated attributes.
     """
     
-    if item is None:
-        return False, None, None, None, None
+    if item["raw_text"] is None:
+        return False, None, None, None, { "utt_id": item["utt_id"] }
     
     # get info from sample.
     audio = item["audio"]
