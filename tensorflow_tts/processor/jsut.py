@@ -19,7 +19,6 @@ import re
 
 import numpy as np
 import soundfile as sf
-import pyopenjtalk
 import yaml
 import librosa
 from dataclasses import dataclass
