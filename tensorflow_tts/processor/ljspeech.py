@@ -167,7 +167,7 @@ class LJSpeechProcessor(BaseProcessor):
         text, wav_path, speaker_name = item
 
         # normalize audio signal to be [-1, 1], soundfile already norm.
-        if os.path.exists(wav_path):
+        if not os.path.exists(wav_path):
             return None
         
         audio, rate = sf.read(wav_path)
