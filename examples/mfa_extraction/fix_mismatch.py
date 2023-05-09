@@ -63,9 +63,23 @@ def fix(base_path: str, dur_path: str, trimmed_dur_path: str, use_norm: str):
                     os.path.join(trimmed_dur_path, f"{i.replace('-ids.npy', '')}-durations.npy")
                 )
             except:
+              if os.path.exists(os.path.join(dur_path, f"{i.replace('-ids.npy', '')}-durations.npy")):
                 dur = np.load(
                     os.path.join(dur_path, f"{i.replace('-ids.npy', '')}-durations.npy")
                 )
+              else:
+                if os.path.exists(os.path.join(pre_path, f"ids/{i}")):
+                  os.remove(os.path.join(pre_path, f"ids/{i}"))
+                if os.path.exists(os.path.join(pre_path, f"raw-feats/{i.replace('-ids.npy', '')}-raw-feats.npy")):
+                  os.remove(os.path.join(pre_path, f"raw-feats/{i.replace('-ids.npy', '')}-raw-feats.npy"))
+                if os.path.exists(os.path.join(pre_path, f"norm-feats/{i.replace('-ids.npy', '')}-norm-feats.npy")):
+                  os.remove(os.path.join(pre_path, f"norm-feats/{i.replace('-ids.npy', '')}-norm-feats.npy"))
+                if os.path.exists(os.path.join(pre_path, f"wavs/{i.replace('-ids.npy', '')}-wave.npy")):
+                  os.remove(os.path.join(pre_path, f"wavs/{i.replace('-ids.npy', '')}-wave.npy"))
+                if os.path.exists(os.path.join(pre_path, f"raw-f0/{i.replace('-ids.npy', '')}-raw-f0.npy")):
+                  os.remove(os.path.join(pre_path, f"raw-f0/{i.replace('-ids.npy', '')}-raw-f0.npy"))
+                if os.path.exists(os.path.join(pre_path, f"raw-energies/{i.replace('-ids.npy', '')}-raw-energy.npy")):
+                  os.remove(os.path.join(pre_path, f"raw-energies/{i.replace('-ids.npy', '')}-raw-energy.npy"))
 
             l_mel = len(mel)
             dur_s = np.sum(dur)
