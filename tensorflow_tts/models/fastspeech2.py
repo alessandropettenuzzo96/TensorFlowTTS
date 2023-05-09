@@ -182,6 +182,9 @@ class TFFastSpeech2(TFFastSpeech):
         energy_embedding = self.energy_dropout(energy_embedding, training=True)
 
         # sum features
+        print(f"f0: {f0_embedding}")
+        print(f"energy: {energy_embedding}")
+        print(f"last_encoder: {last_encoder_hidden_states}")
         last_encoder_hidden_states += f0_embedding + energy_embedding
 
         length_regulator_outputs, encoder_masks = self.length_regulator(
