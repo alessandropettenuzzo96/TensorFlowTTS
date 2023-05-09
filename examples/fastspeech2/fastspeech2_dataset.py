@@ -90,6 +90,8 @@ class CharactorDurationF0EnergyMelDataset(AbstractDataset):
         f0_files = sorted(find_files(root_dir, f0_query))
         energy_files = sorted(find_files(root_dir, energy_query))
 
+        print(f"mel: {len(mel_files)}, ids: {len(charactor_files)}, dur: {len(duration_files)}, f0: {len(f0_files)}, energy: {len(energy_files)}")
+        
         # assert the number of files
         assert len(mel_files) != 0, f"Not found any mels files in ${root_dir}."
         assert (
